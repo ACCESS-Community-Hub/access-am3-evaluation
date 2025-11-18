@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: 'ACCESS-CM3-paper-1'
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+
+repository-code: 'https://github.com/ACCESS-Community-Hub/access-am3-paper-1'
+url: 'https://github.com/ACCESS-Community-Hub/access-am3-paper-1'
+repository-artifact: >-
+abstract: >-
+license: CC-BY-4.0
+version: 
+date-released: 
+keywords:
+  - access-am3
+  - atmosphere
+  - model
+  - land
+  - CABLE
+  - UM
