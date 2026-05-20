@@ -1,4 +1,4 @@
-# access-am3-paper-1
+# access-am3-evaluation
 
 A collaborative project to create and discuss figures for description and assessment paper(s) for [ACCESS-AM3](https://github.com/ACCESS-NRI/access-am3-configs). Your help is welcome! 
 
@@ -6,8 +6,8 @@ To get started, see the _How it works_ section below.
 
 ## Experiment descriptions
 
-Currently we welcome feedback on: 
-* **[TODO] configurations TBD**
+Currently we welcome contributions on: 
+* n512e vs n96e test simulations to evaluate the hi-resolution configuration and the impact of the resolution. [More details on this Hive post.](https://forum.access-hive.org.au/t/we-need-your-help-am3-hi-res-evaluation/6438)
 
 ## How it works
 
@@ -20,7 +20,7 @@ The [mega-issue](https://github.com/ACCESS-Community-Hub/access-am3-paper-1/issu
 Please use sub-issues of the [mega-issue](https://github.com/ACCESS-Community-Hub/access-am3-paper-1/issues/1) for creating new Figures and follow the checklist in the [issue template](https://github.com/ACCESS-Community-Hub/access-am3-paper-1/issues/new?template=fig-issue-template.md).
 
 ### Options for scripts/notebooks
-There are 3 different levels of scripts/notebooks to enable anyone to contribute, regardless of their language or workflow preference. These reside within the `access-am3-paper-1/notebooks`directory:
+There are 3 different levels of scripts/notebooks to enable anyone to contribute, regardless of their language or workflow preference. These reside within the `access-am3-evaluation/notebooks`directory:
 1. `polished-python`contains scripts that have used the `access-am3-paper-1/notebook/polished-python/00_template_notebook.ipynb` [template](https://github.com/ACCESS-Community-Hub/access-am3-paper-1/blob/main/notebooks/polished-python/00_template_notebook.ipynb) as a starting point and have followed the checklist in the [issue template](https://github.com/ACCESS-Community-Hub/access-am3-paper-1/issues/new?template=fig-issue-template.md), which includes adding the new script to `access-am3-paper-1/notebooks/polished-python/mkfigs.sh`; 
 2. `sandbox-python`contains scripts that create evaluation using python, but are not using the above workflow;
 3. `non-python` contains any kind of script that creates an evaluation figure. 
