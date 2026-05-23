@@ -1,5 +1,5 @@
 ---
-description: "Use when: AM3 model output plotting, soil moisture, n96e/n512e comparisons, sandbox-python scripts, first-timestep maps"
+description: "Use when: AM3 model output plotting, n96e/n512e comparisons, sandbox-python scripts, maps or timeseries or other analysis."
 name: "AM3 sandbox analysis plots"
 user-invocable: true
 ---
