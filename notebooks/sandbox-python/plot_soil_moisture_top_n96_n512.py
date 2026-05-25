@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import glob
 import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -15,6 +16,8 @@ N512_DIR = "/g/data/gb02/public/AM3/output/control/n512"
 FILE_GLOB = "*pc*.nc"
 STASH_ID = "m01s08i223"
 LONG_NAME_MATCH = "SOIL MOISTURE"
+SCRIPT_NAME = "access-am3-evaluation/notebooks/sandbox-python/plot_soil_moisture_top_n96_n512.py"
+OUTPUT_FIG = "access-am3-evaluation/notebooks/sandbox-python/plots/soil_moisture_top_n96_n512.jpg"
 
 
 def find_first_file(base_dir: str) -> str:
@@ -71,10 +74,39 @@ def get_xy(da: xr.DataArray):
 
 
 def load_top_soil_moisture(path: str) -> tuple[xr.DataArray, str]:
-    ds = xr.open_dataset(path)
-    var_name = find_soil_moisture_var(ds)
-    da = select_top_layer(ds[var_name]).squeeze()
+    with xr.open_dataset(path) as ds:
+        var_name = find_soil_moisture_var(ds)
+        # Load before closing the dataset context.
+        da = select_top_layer(ds[var_name]).squeeze().load()
     return da, var_name
+
+
+def resolve_from_repo_root(configured_path: str) -> Path:
+    # Resolve from git root and accept both "notebooks/..." and
+    # "<repo-name>/notebooks/..." configured paths.
+    search_starts: list[Path] = []
+    if "__file__" in globals():
+        search_starts.append(Path(__file__).resolve().parent)
+    search_starts.append(Path.cwd().resolve())
+
+    repo_root = None
+    for start in search_starts:
+        for candidate in (start, *start.parents):
+            if (candidate / ".git").exists():
+                repo_root = candidate
+                break
+        if repo_root is not None:
+            break
+
+    if repo_root is None:
+        raise FileNotFoundError(
+            "Could not find repository root (.git directory) from script or cwd."
+        )
+
+    rel = Path(configured_path)
+    if rel.parts and rel.parts[0] == repo_root.name:
+        rel = Path(*rel.parts[1:])
+    return repo_root / rel
 
 
 def main() -> None:
@@ -106,7 +138,7 @@ def main() -> None:
         ax.text(
             0.01,
             -0.08,
-            f"{os.path.basename(path)} | {var_name}",
+            f"{Path(path).name} | {var_name}",
             transform=ax.transAxes,
             ha="left",
             va="top",
@@ -116,12 +148,27 @@ def main() -> None:
     cbar = fig.colorbar(mesh, ax=axes.ravel().tolist(), shrink=0.9)
     cbar.set_label("soil moisture (top layer)")
 
+    plot_user = os.environ.get("USER", "unknown")
+    fig.text(
+        0.5,
+        -0.05,
+        f"{SCRIPT_NAME} | user: {plot_user}",
+        ha="center",
+        va="bottom",
+        fontsize=7,
+        alpha=0.8,
+    )
+
     print("n96 file:", n96_path)
     print("n512 file:", n512_path)
     print("n96 variable:", n96_var)
     print("n512 variable:", n512_var)
 
-    plt.show()
+    output_path = resolve_from_repo_root(OUTPUT_FIG)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(output_path, dpi=300, bbox_inches="tight", format="jpg")
+    plt.close(fig)
+    print("saved figure:", output_path)
 
 
 if __name__ == "__main__":
