@@ -5,7 +5,46 @@ message: >-
   metadata from this file.
 type: software
 authors:
-
+  - given-names: Julie
+    family-names: Arblaster
+    email: Julie.Arblaster@moansh.edu
+    affiliation: 21st Century Weather, Monash University, Melbourne, Australia
+    orcid: https://orcid.org/0000-0002-4287-2363
+  - given-names: Shixue
+    family-names: Li
+    email: Shixue.Li@moansh.edu
+    affiliation: 21st Century Weather, Monash University, Melbourne, Australia
+    orcid: https://orcid.org/0000-0002-5211-7361
+  - given-names: Bethan
+    family-names: White
+    email: bethan.white@unimelb.edu.au
+    affiliation: 21st Century Weather, University of Melbourne, Melbourne, Australia
+    orcid: https://orcid.org/0000-0002-3467-7154
+  - given-names: Chenhui
+    family-names: Jin
+    email: chenhui.jin1@monash.edu
+    affiliation: 21st Century Weather, Monash University, Melbourne, Australia
+    orcid: https://orcid.org/0000-0003-3660-5709
+  - given-names: Claire
+    family-names: Vincent
+    email: claire.vincent@unimelb.edu.au
+    affiliation: 21st Century Weather, University of Melbourne, Melbourne, Australia
+    orcid: https://orcid.org/0000-0001-5315-1644
+  - given-names: Mathew
+    family-names: Lipson
+    email: m.lipson@unsw.edu.au
+    affiliation: 21st Century Weather, UNSW, Sidney, Australia
+    orcid: https://orcid.org/0000-0001-5322-1796
+  - given-names: Linyuan
+    family-names: Sun
+    email: linyuan.sun@unsw.edu.au
+    affiliation: 21st Century Weather, UNSW, Sidney, Australia
+    orcid: https://orcid.org/0009-0002-7396-6327
+  - given-names: Jiachen
+    family-names: Lu
+    email: 
+    affiliation: 21st Century Weather, UNSW, Sidney, Australia
+    orcid: 
 repository-code: 'https://github.com/ACCESS-Community-Hub/access-am3-paper-1'
 url: 'https://github.com/ACCESS-Community-Hub/access-am3-paper-1'
 repository-artifact: >-
